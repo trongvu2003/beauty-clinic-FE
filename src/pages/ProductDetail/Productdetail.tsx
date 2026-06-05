@@ -4,7 +4,7 @@ import { ShoppingBag, ChevronLeft, ChevronRight } from "lucide-react";
 import { useProduct, useProducts } from "../../hooks/useProducts";
 import type { Product } from "../../types/product.types";
 import defaultImg from "../../assets/images/default.avif";
-import "./ProductDetail.css";
+import "./Productdetail.css";
 
 const getProductImage = (product: Product, index = 0): string => {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
