@@ -14,6 +14,7 @@ const Header = () => {
 
   const navItems = [
     { label: "Trang chủ", href: "home" },
+    { label: "Sản phẩm", href: "products" },
     { label: "Dịch vụ", href: "services" },
     { label: "Blog", href: "blog" },
     { label: "Về chúng tôi", href: "about" },

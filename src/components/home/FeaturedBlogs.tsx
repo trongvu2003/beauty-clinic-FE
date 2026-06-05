@@ -2,7 +2,9 @@ import "./FeaturedBlogs.css";
 import { useBlogs } from "../../hooks/useBlogs";
 import type { Blog } from "../../types/blog.types";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import defaultBlogImg from "../../assets/images/default.avif";
+import { useBeautyNews } from "../../hooks/useBeautyNews";
 
 const getBlogImage = (blog: Blog): string => {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -47,7 +49,27 @@ const SkeletonBlogCard = ({ index }: { index: number }) => (
 );
 
 const FeaturedBlogs = () => {
-  const { blogs, loading, error } = useBlogs({ limit: 5, isPublished: true });
+  const {
+    blogs,
+    loading: blogsLoading,
+    error: blogsError,
+  } = useBlogs({ limit: 5, isPublished: true });
+
+  const {
+    news,
+    loading: newsLoading,
+    error: newsError,
+    fetch: fetchNews,
+  } = useBeautyNews();
+
+  const [tab, setTab] = useState<"admin" | "news">("admin");
+
+  useEffect(() => {
+    if (tab === "news") fetchNews();
+  }, [tab, fetchNews]);
+
+  const isLoading = tab === "admin" ? blogsLoading : newsLoading;
+  const error = tab === "admin" ? blogsError : newsError;
 
   return (
     <section className="featured-blogs" id="blog">
@@ -64,18 +86,41 @@ const FeaturedBlogs = () => {
             trình khám phá bản thân — nơi mỗi khách hàng bước vào với kỳ vọng và
             bước ra với một phiên bản hoàn thiện hơn của chính mình.
           </p>
-          <Link to="/blog" className="btn--outline">
-            Xem tất cả bài viết <ArrowRight />
-          </Link>
+
+          {/* Tabs */}
+          <div className="blog-tabs">
+            <button
+              className={`blog-tab ${
+                tab === "admin" ? "blog-tab--active" : ""
+              }`}
+              onClick={() => setTab("admin")}
+            >
+              Bài viết của chúng tôi
+            </button>
+            <button
+              className={`blog-tab ${tab === "news" ? "blog-tab--active" : ""}`}
+              onClick={() => setTab("news")}
+            >
+              Tin tức làm đẹp
+            </button>
+          </div>
+
+          {tab === "admin" && (
+            <Link to="/blog" className="btn--outline">
+              Xem tất cả bài viết <ArrowRight />
+            </Link>
+          )}
         </div>
         <div className="featured-blogs__right">
           {error && <div className="featured-blogs__error">⚠ {error}</div>}
+
           <div className="timeline-container">
-            {loading
+            {isLoading
               ? Array.from({ length: 3 }).map((_, i) => (
                   <SkeletonBlogCard key={i} index={i} />
                 ))
-              : blogs.map((blog: Blog, index: number) => (
+              : tab === "admin"
+              ? blogs.map((blog: Blog, index: number) => (
                   <div className="timeline-row" key={blog.id}>
                     <div className="timeline-indicator">
                       <div className="timeline-line" />
@@ -98,18 +143,15 @@ const FeaturedBlogs = () => {
                           </span>
                         )}
                       </div>
-
                       <Link
                         to={`/blog/${blog.id}`}
                         className="timeline-card__title-link"
                       >
                         <h3 className="timeline-card__title">{blog.title}</h3>
                       </Link>
-
                       {blog.excerpt && (
                         <p className="timeline-card__desc">{blog.excerpt}</p>
                       )}
-
                       <Link
                         to={`/blog/${blog.id}`}
                         className="timeline-card__img-wrap"
@@ -123,7 +165,6 @@ const FeaturedBlogs = () => {
                           className="timeline-card__img"
                         />
                       </Link>
-
                       <div className="timeline-card__footer">
                         <Link
                           to={`/blog/${blog.id}`}
@@ -131,6 +172,70 @@ const FeaturedBlogs = () => {
                         >
                           Đọc tiếp <ArrowRight />
                         </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              : news.map((item, index) => (
+                  <div className="timeline-row" key={item.id || item.url}>
+                    <div className="timeline-indicator">
+                      <div className="timeline-line" />
+                      <div className="timeline-number-wrapper">
+                        <span className="timeline-number">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="timeline-card">
+                      <div className="timeline-card__meta">
+                        <span className="timeline-card__category">
+                          {item.source}
+                        </span>
+                        {item.publishedAt && (
+                          <span className="timeline-card__date">
+                            {formatDate(item.publishedAt)}
+                          </span>
+                        )}
+                      </div>
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="timeline-card__title-link"
+                      >
+                        <h3 className="timeline-card__title">{item.title}</h3>
+                      </a>
+                      <p className="timeline-card__desc">{item.excerpt}</p>
+                      {item.imageUrl && (
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="timeline-card__img-wrap"
+                          tabIndex={-1}
+                          aria-hidden="true"
+                        >
+                          <img
+                            src={item.imageUrl}
+                            alt={item.title}
+                            loading="lazy"
+                            className="timeline-card__img"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).style.display =
+                                "none";
+                            }}
+                          />
+                        </a>
+                      )}
+                      <div className="timeline-card__footer">
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="timeline-card__read-more"
+                        >
+                          Đọc tiếp <ArrowRight />
+                        </a>
                       </div>
                     </div>
                   </div>
