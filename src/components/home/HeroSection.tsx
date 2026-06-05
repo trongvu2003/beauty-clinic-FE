@@ -66,7 +66,6 @@ const HeroSection = () => {
         onClick={scrollDown}
         aria-label="Scroll down"
       >
-        {/* Màu gold #C9A84C hoàn toàn phù hợp với tone màu thẩm mỹ cao cấp */}
         <ChevronDown color="#C9A84C" size={24} strokeWidth={1.5} />
       </button>
     </section>
