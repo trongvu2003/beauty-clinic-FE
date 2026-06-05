@@ -3,7 +3,6 @@ import { useBrands, useBrandMutations } from "../../../hooks/useBrands";
 import BrandForm from "../../../components/Admin/form/BrandForm";
 import type { Brand } from "../../../types/product.types";
 import "../blogs/BlogManagement.css";
-import { Eye, EyeOff } from "lucide-react";
 
 const defaultImg = "../../../assets/images/default.avif";
 
