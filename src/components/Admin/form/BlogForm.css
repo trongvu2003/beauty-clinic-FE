@@ -1,0 +1,147 @@
+.bf-wrapper {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.bf-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.bf-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bf-row {
+  display: flex;
+  gap: 20px;
+}
+
+.bf-row > div {
+  flex: 1;
+}
+
+.bf-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bf-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.bf-group input[type="text"],
+.bf-group textarea {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #f9fafb;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.bf-group input:focus,
+.bf-group textarea:focus {
+  border-color: #4f46e5;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.bf-checkbox-group {
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.bf-checkbox-group input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.bf-file-input {
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.bf-hint {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.bf-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.bf-btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+
+.bf-btn-cancel {
+  background-color: white;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.bf-btn-cancel:hover:not(:disabled) {
+  background-color: #f3f4f6;
+}
+
+.bf-btn-submit {
+  background-color: #4f46e5;
+  color: white;
+}
+
+.bf-btn-submit:hover:not(:disabled) {
+  background-color: #4338ca;
+}
+.bf-btn-submit:disabled,
+.bf-btn-cancel:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.bf-image-preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.bf-image-preview {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.bf-image-preview-wrapper {
+  position: relative;
+}

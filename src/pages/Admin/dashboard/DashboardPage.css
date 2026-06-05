@@ -1,0 +1,13 @@
+.dashboard-header h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: #1e293b;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}

@@ -1,0 +1,146 @@
+.brf-wrapper {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.brf-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.brf-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.brf-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.brf-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.brf-group input[type="text"],
+.brf-group textarea {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #f9fafb;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.brf-group input:focus,
+.brf-group textarea:focus {
+  border-color: #4f46e5;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.brf-checkbox-group {
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.brf-checkbox-group input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.brf-file-input {
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.brf-image-preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.brf-image-preview-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background-color: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.brf-image-preview {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.brf-hint {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.brf-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.brf-btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.brf-btn-cancel {
+  background-color: white;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.brf-btn-cancel:hover:not(:disabled) {
+  background-color: #f3f4f6;
+}
+
+.brf-btn-submit {
+  background-color: #4f46e5;
+  color: white;
+}
+
+.brf-btn-submit:hover:not(:disabled) {
+  background-color: #4338ca;
+}
+.brf-btn-submit:disabled,
+.brf-btn-cancel:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

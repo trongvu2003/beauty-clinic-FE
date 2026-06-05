@@ -1,0 +1,54 @@
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  height: 100vh;
+  background: #1e293b; /* Nền xanh đen đậm */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Tạo bóng viền ngăn cách */
+  z-index: 10;
+}
+
+.logo {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  color: #d4a574; /* Dùng màu chủ đạo cho Logo */
+  border-bottom: 1px solid #334155; /* Viền sáng hơn một chút để phân tách */
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  gap: 8px;
+}
+
+.sidebar nav a {
+  text-decoration: none;
+  color: #94a3b8; /* Màu xám sáng để hợp nền tối */
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.3s ease; /* Thêm hiệu ứng mượt mà */
+}
+
+/* Hiệu ứng khi di chuột */
+.sidebar nav a:hover {
+  background: #334155;
+  color: white;
+  transform: translateX(4px); /* Dịch nhẹ sang phải */
+}
+
+/* Tab đang được chọn */
+.sidebar nav a.active {
+  background: #d4a574;
+  color: white;
+  box-shadow: 0 4px 10px rgba(212, 165, 116, 0.3); /* Thêm bóng glow cho đẹp */
+}
