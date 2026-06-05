@@ -2,53 +2,123 @@
   width: 260px;
   min-width: 260px;
   height: 100vh;
-  background: #1e293b; /* Nền xanh đen đậm */
+  background: #0f172a;
   color: white;
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Tạo bóng viền ngăn cách */
+  border-right: 1px solid #1e293b;
   z-index: 10;
+  transition: all 0.3s ease;
 }
 
-.logo {
-  height: 70px;
+.sidebar-header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 14px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #d4a574, #b88645);
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 22px;
   font-weight: 900;
-  letter-spacing: 1.5px;
-  color: #d4a574; /* Dùng màu chủ đạo cho Logo */
-  border-bottom: 1px solid #334155; /* Viền sáng hơn một chút để phân tách */
+  font-size: 20px;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(212, 165, 116, 0.4);
 }
 
-.sidebar nav {
+.logo-text {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(to right, #ffffff, #d4a574);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.sidebar-nav {
   display: flex;
   flex-direction: column;
   padding: 24px 16px;
-  gap: 8px;
+  gap: 6px;
+  flex: 1;
+  overflow-y: auto;
 }
 
-.sidebar nav a {
+.sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+.nav-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 10px;
+  margin-left: 12px;
+  letter-spacing: 1px;
+}
+
+/* --- TỪNG ITEM MENU --- */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   text-decoration: none;
-  color: #94a3b8; /* Màu xám sáng để hợp nền tối */
-  padding: 14px 18px;
-  border-radius: 10px;
+  color: #94a3b8;
+  padding: 12px 14px;
+  border-radius: 8px;
   font-weight: 500;
   font-size: 15px;
-  transition: all 0.3s ease; /* Thêm hiệu ứng mượt mà */
+  transition: all 0.2s ease-in-out;
+  position: relative;
 }
 
-/* Hiệu ứng khi di chuột */
-.sidebar nav a:hover {
-  background: #334155;
-  color: white;
-  transform: translateX(4px); /* Dịch nhẹ sang phải */
+.nav-item svg {
+  color: #64748b;
+  transition: all 0.2s ease-in-out;
 }
 
-/* Tab đang được chọn */
-.sidebar nav a.active {
+.nav-item:hover {
+  background: #1e293b;
+  color: #f8fafc;
+  transform: translateX(4px);
+}
+.nav-item:hover svg {
+  color: #d4a574;
+}
+
+.nav-item.active {
+  background: linear-gradient(
+    90deg,
+    rgba(212, 165, 116, 0.15) 0%,
+    transparent 100%
+  );
+  color: #d4a574;
+  font-weight: 600;
+}
+
+.nav-item.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10%;
+  height: 80%;
+  width: 4px;
   background: #d4a574;
-  color: white;
-  box-shadow: 0 4px 10px rgba(212, 165, 116, 0.3); /* Thêm bóng glow cho đẹp */
+  border-radius: 0 4px 4px 0;
+  box-shadow: 2px 0 8px rgba(212, 165, 116, 0.5);
+}
+
+.nav-item.active svg {
+  color: #d4a574;
 }
